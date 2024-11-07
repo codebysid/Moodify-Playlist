@@ -15,14 +15,16 @@ async function handleGetSongsWithMood(req, res) {
   if (!mood) throw new StandardError(404, "Mood not found");
 
   try {
-    await redisClient.connect();
+    if (!redisClient.isOpen) {
+      await redisClient.connect();
+    }
     let accessToken = await redisClient.get("spotifyAccessToken");
     if (!accessToken) {
       accessToken = await generateAccessTokenWithRefreshToken();
-      if (!accessToken)
+      if (!accessToken) {
         throw new StandardError(500, "Not able to generate token, try again");
+      }
       await redisClient.setEx("spotifyAccessToken", 3600, accessToken);
-      redisClient.quit();
     }
     const tracks = await getRecommendedSongs(accessToken, mood);
     console.log({ tracks });

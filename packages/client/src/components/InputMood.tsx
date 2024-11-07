@@ -1,5 +1,5 @@
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-import Icons from "./Icons";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 
 const InputMood = () => {
@@ -13,7 +13,7 @@ const InputMood = () => {
     moodPlaylistUrl: "",
   });
   const submitBtnRef = useRef<HTMLButtonElement>(null);
-
+  const navigate = useNavigate();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const btn = submitBtnRef.current;
@@ -52,17 +52,14 @@ const InputMood = () => {
       const data2 = await res2.json();
       if (!data2 && !data2.success) return;
       console.log({ data2 });
-      setMood((prev) => ({
-        ...prev,
-        moodPlaylistUrl: data2.message.playlistUrl,
-      }));
       btn.textContent = "Create playlist with AI";
+      navigate(`/playlist/`, { state: { url: data2.message.playlistUrl } });
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleMoodDescriptionChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const handleMoodDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
     setMood((prev) =>
       prev
         ? { ...prev, moodDescription: e.target.value }
@@ -73,44 +70,31 @@ const InputMood = () => {
           }
     );
 
-  const handleOpenPlaylist = () =>
-    (window.location.href = mood.moodPlaylistUrl);
-
   useEffect(() => {
     console.log({ mood });
   }, [mood]);
-  return (
-    <div className="flex justify-center items-center">
-      <div className="flex flex-row items-center  justify-start gap-40">
-        <form
-          className="flex flex-col justify-center min-h-screen gap-5"
-          onSubmit={handleSubmit}
-        >
-          <input
-            className="rounded-lg px-8 py-4 bg-transparent outline-none"
-            value={mood.moodDescription}
-            onChange={handleMoodDescriptionChange}
-            placeholder="Ex: Frustrated due to college stress"
-          />
 
-          <Button
-            ref={submitBtnRef}
-            icon={<Icons name="geminiIcon" />}
-            type="submit"
-            className=" disabled:cursor-not-allowed"
-          >
-            <span>Create playlist with AI</span>
-          </Button>
-        </form>
-        {mood.moodPlaylistUrl && (
-          <Button
-            icon={<Icons name="spotifyIcon" />}
-            onClick={handleOpenPlaylist}
-          >
-            <span>Open Playlist in Spotify</span>
-          </Button>
-        )}
-      </div>
+  return (
+    <div className="flex flex-col lg:flex-row gap-16 items-center justify-center w-full">
+      <form
+        className="flex flex-col justify-center items-start lg:items-center gap-4"
+        onSubmit={handleSubmit}
+      >
+        <textarea
+          className="rounded-lg bg-transparent outline-none resize-none pl-2 lg:pl-5"
+          value={mood.moodDescription}
+          onChange={handleMoodDescriptionChange}
+          placeholder="Ex: Frustrated due to college assignments"
+          rows={3}
+        />
+        <Button
+          ref={submitBtnRef}
+          type="submit"
+          className="disabled:cursor-not-allowed"
+        >
+          <span>Create playlist with AI</span>
+        </Button>
+      </form>
     </div>
   );
 };
