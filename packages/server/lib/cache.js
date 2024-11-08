@@ -455,7 +455,588 @@ const moodToGenreMap = {
     target_valence: 0.8,
     language: "hindi",
   },
-  language: "hindi",
+  // **Positive Moods**
+  happy: {
+    genres: ["pop", "dance", "funk", "disco", "reggae"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  excited: {
+    genres: ["edm", "pop", "rock", "techno", "dance"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  grateful: {
+    genres: ["acoustic", "indie", "pop", "soul", "jazz"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  hopeful: {
+    genres: ["pop", "indie", "acoustic", "rock", "dance"],
+    target_energy: 0.7,
+    language: "hindi",
+  },
+  proud: {
+    genres: ["rock", "hip-hop", "edm", "pop", "indie"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  confident: {
+    genres: ["pop", "hip-hop", "rock", "dancehall", "electropop"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  content: {
+    genres: ["indie", "acoustic", "pop", "jazz", "soul"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  optimistic: {
+    genres: ["pop", "indie", "rock", "electropop", "acoustic"],
+    target_energy: 0.7,
+    language: "hindi",
+  },
+  motivated: {
+    genres: ["pop", "edm", "dance", "rock", "techno"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  compassionate: {
+    genres: ["acoustic", "indie", "pop", "soul", "jazz"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  playful: {
+    genres: ["pop", "electropop", "indie", "dance", "funk"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  enthusiastic: {
+    genres: ["pop", "rock", "edm", "hip-hop", "dance"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  affectionate: {
+    genres: ["soul", "r&b", "jazz", "pop", "acoustic"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  loving: {
+    genres: ["r&b", "soul", "acoustic", "pop", "jazz"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  sympathetic: {
+    genres: ["acoustic", "pop", "indie", "soul", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  empowered: {
+    genres: ["pop", "rock", "edm", "hip-hop", "dance"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  euphoric: {
+    genres: ["edm", "dance", "electropop", "pop", "techno"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  victorious: {
+    genres: ["rock", "hip-hop", "edm", "pop", "dancehall"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  triumphant: {
+    genres: ["rock", "hip-hop", "edm", "pop", "dance"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  successful: {
+    genres: ["rock", "hip-hop", "pop", "edm", "dance"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  satisfying: {
+    genres: ["indie", "pop", "acoustic", "soul", "jazz"],
+    target_energy: 0.6,
+    language: "hindi",
+  },
+  blissful: {
+    genres: ["indie", "acoustic", "soul", "pop", "jazz"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  cheery: {
+    genres: ["pop", "dance", "indie", "funk", "disco"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  adventurous: {
+    genres: ["pop", "rock", "edm", "hip-hop", "techno"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  appreciative: {
+    genres: ["acoustic", "indie", "pop", "jazz", "soul"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  satisfied: {
+    genres: ["pop", "indie", "acoustic", "rock", "soul"],
+    target_energy: 0.6,
+    language: "hindi",
+  },
+  inspired: {
+    genres: ["pop", "rock", "electropop", "indie", "acoustic"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+
+  // **Negative Moods**
+  sad: {
+    genres: ["blues", "soul", "indie", "ballad", "classical"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  angry: {
+    genres: ["rock", "punk", "metal", "alternative", "indie"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  anxious: {
+    genres: ["ambient", "lofi", "indie", "chillhop", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  depressed: {
+    genres: ["indie", "soul", "ballad", "blues", "classical"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  lonely: {
+    genres: ["indie", "soul", "pop", "ballad", "acoustic"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  fearful: {
+    genres: ["ambient", "darkwave", "indie", "lofi", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  guilty: {
+    genres: ["indie", "pop", "acoustic", "soul", "ballad"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  jealous: {
+    genres: ["pop", "rock", "indie", "electropop", "soul"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  nervous: {
+    genres: ["ambient", "lofi", "indie", "chillhop", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  insecure: {
+    genres: ["indie", "acoustic", "soul", "pop", "ballad"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  shocked: {
+    genres: ["rock", "edm", "indie", "electropop", "alternative"],
+    target_energy: 0.6,
+    language: "hindi",
+  },
+  grumpy: {
+    genres: ["rock", "punk", "metal", "alternative", "indie"],
+    target_energy: 0.7,
+    language: "hindi",
+  },
+  miserable: {
+    genres: ["indie", "soul", "ballad", "acoustic", "blues"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  unhappy: {
+    genres: ["indie", "soul", "blues", "acoustic", "ballad"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  frustrated: {
+    genres: ["metal", "rock", "punk", "alternative", "indie"],
+    target_energy: 0.7,
+    language: "hindi",
+  },
+  helpless: {
+    genres: ["indie", "soul", "ballad", "blues", "acoustic"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  regretful: {
+    genres: ["indie", "blues", "soul", "acoustic", "pop"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  sorrowful: {
+    genres: ["indie", "soul", "acoustic", "ballad", "blues"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  vulnerable: {
+    genres: ["indie", "pop", "acoustic", "blues", "soul"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  defeated: {
+    genres: ["blues", "soul", "ballad", "indie", "acoustic"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  regret: {
+    genres: ["indie", "soul", "acoustic", "ballad", "blues"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  embarrassed: {
+    genres: ["indie", "pop", "rock", "electropop", "alternative"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  humiliated: {
+    genres: ["pop", "rock", "indie", "soul", "electropop"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  bored: {
+    genres: ["indie", "ambient", "chillhop", "lofi", "acoustic"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  isolated: {
+    genres: ["indie", "soul", "ballad", "acoustic", "blues"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  stressed: {
+    genres: ["rock", "edm", "metal", "techno", "indie"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  disappointed: {
+    genres: ["indie", "acoustic", "blues", "ballad", "pop"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  disillusioned: {
+    genres: ["indie", "pop", "acoustic", "blues", "soul"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  uncomfortable: {
+    genres: ["indie", "ambient", "acoustic", "lofi", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  overwhelmed: {
+    genres: ["ambient", "indie", "lofi", "acoustic", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  unsettled: {
+    genres: ["ambient", "indie", "lofi", "acoustic", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  unproductive: {
+    genres: ["indie", "lofi", "ambient", "chillhop", "acoustic"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  lost: {
+    genres: ["indie", "ambient", "acoustic", "lofi", "ballad"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  tense: {
+    genres: ["rock", "metal", "indie", "electropop", "punk"],
+    target_energy: 0.7,
+    language: "hindi",
+  },
+  disheartened: {
+    genres: ["indie", "soul", "ballad", "acoustic", "blues"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  apprehensive: {
+    genres: ["ambient", "lofi", "indie", "chillhop", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+
+  // **Neutral Moods**
+  calm: {
+    genres: ["lofi", "ambient", "chillhop", "acoustic", "classical"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  confused: {
+    genres: ["indie", "ambient", "electropop", "lofi", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  indifferent: {
+    genres: ["ambient", "lofi", "acoustic", "indie", "jazz"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  indecisive: {
+    genres: ["ambient", "indie", "lofi", "jazz", "acoustic"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  detached: {
+    genres: ["ambient", "indie", "lofi", "jazz", "acoustic"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  uncertain: {
+    genres: ["indie", "ambient", "lofi", "acoustic", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  reflective: {
+    genres: ["acoustic", "indie", "lofi", "ambient", "classical"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  pensive: {
+    genres: ["indie", "ambient", "lofi", "jazz", "classical"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  distracted: {
+    genres: ["indie", "ambient", "lofi", "acoustic", "electropop"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  uncomfortable: {
+    genres: ["indie", "lofi", "ambient", "electropop", "jazz"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  mellow: {
+    genres: ["lofi", "indie", "ambient", "acoustic", "classical"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  nostalgic: {
+    genres: ["indie", "ambient", "acoustic", "pop", "soul"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  sentimental: {
+    genres: ["indie", "pop", "acoustic", "soul", "ballad"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  curious: {
+    genres: ["indie", "ambient", "electropop", "rock", "jazz"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  suspicious: {
+    genres: ["indie", "electropop", "ambient", "pop", "rock"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+
+  // **High Energy & Enthusiasm**
+  energetic: {
+    genres: ["edm", "pop", "dance", "rock", "techno"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  enthralled: {
+    genres: ["edm", "pop", "dance", "rock", "techno"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  excited: {
+    genres: ["edm", "pop", "dance", "rock", "techno"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  motivated: {
+    genres: ["edm", "pop", "dance", "techno", "rock"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  playful: {
+    genres: ["pop", "indie", "electropop", "dance", "funk"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  adventurous: {
+    genres: ["pop", "rock", "edm", "hip-hop", "techno"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  confident: {
+    genres: ["pop", "hip-hop", "rock", "dancehall", "electropop"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  euphoric: {
+    genres: ["edm", "dance", "electropop", "pop", "techno"],
+    target_energy: 0.9,
+    language: "hindi",
+  },
+  successful: {
+    genres: ["pop", "rock", "edm", "dancehall", "techno"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  victorious: {
+    genres: ["rock", "hip-hop", "edm", "pop", "dancehall"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  triumphant: {
+    genres: ["rock", "hip-hop", "edm", "pop", "dance"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+
+  // **Low Energy & Relaxed**
+  tired: {
+    genres: ["indie", "lofi", "ambient", "acoustic", "classical"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  lazy: {
+    genres: ["indie", "lofi", "ambient", "chillhop", "acoustic"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  relaxed: {
+    genres: ["lofi", "ambient", "chillhop", "acoustic", "classical"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  mellow: {
+    genres: ["lofi", "ambient", "chillhop", "acoustic", "classical"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  unconcerned: {
+    genres: ["indie", "lofi", "ambient", "chillhop", "acoustic"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  apathetic: {
+    genres: ["indie", "lofi", "chillhop", "ambient", "acoustic"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  disconnected: {
+    genres: ["indie", "lofi", "ambient", "chillhop", "acoustic"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  aimless: {
+    genres: ["indie", "ambient", "lofi", "acoustic", "chillhop"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+
+  // **Conflicted Moods**
+  stressed: {
+    genres: ["rock", "edm", "metal", "techno", "indie"],
+    target_energy: 0.8,
+    language: "hindi",
+  },
+  uncomfortable: {
+    genres: ["indie", "ambient", "acoustic", "lofi", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  overwhelmed: {
+    genres: ["ambient", "indie", "lofi", "acoustic", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  tense: {
+    genres: ["rock", "metal", "indie", "electropop", "punk"],
+    target_energy: 0.7,
+    language: "hindi",
+  },
+
+  // **Emotionally Conflicted or Mixed Moods**
+  vulnerable: {
+    genres: ["indie", "pop", "acoustic", "blues", "soul"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  suspicious: {
+    genres: ["indie", "electropop", "ambient", "pop", "rock"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
+  doubtful: {
+    genres: ["indie", "acoustic", "ballad", "lofi", "ambient"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+
+  // **Uncertain or Undecided**
+  indecisive: {
+    genres: ["ambient", "indie", "lofi", "jazz", "acoustic"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+  uncertain: {
+    genres: ["indie", "ambient", "lofi", "acoustic", "jazz"],
+    target_energy: 0.4,
+    language: "hindi",
+  },
+
+  // **Sadness and Despair**
+  depressed: {
+    genres: ["indie", "ballad", "soul", "acoustic", "blues"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  lonely: {
+    genres: ["indie", "blues", "acoustic", "ballad", "soul"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  grief_stricken: {
+    genres: ["indie", "acoustic", "soul", "blues", "ballad"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  miserable: {
+    genres: ["indie", "soul", "ballad", "blues", "acoustic"],
+    target_energy: 0.2,
+    language: "hindi",
+  },
+  unhappy: {
+    genres: ["indie", "soul", "ballad", "blues", "acoustic"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  regretful: {
+    genres: ["indie", "blues", "soul", "ballad", "acoustic"],
+    target_energy: 0.3,
+    language: "hindi",
+  },
+  neutral: {
+    genres: ["lofi", "indie", "ambient", "acoustic", "jazz"],
+    target_energy: 0.5,
+    language: "hindi",
+  },
 };
 
 module.exports = { moodToGenreMap };

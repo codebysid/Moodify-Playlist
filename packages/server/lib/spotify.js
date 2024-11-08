@@ -4,13 +4,23 @@ const { StandardError } = require("./ErrorAndResponse");
 async function getRecommendedSongs(accessToken, mood) {
   if (!accessToken || !mood)
     throw new StandardError(404, "Access Token or mood not found");
-
-  const moodTrackData = moodToGenreMap[mood];
-  if (!moodTrackData) {
-    console.log(`Mood not in cache => ${mood}`);
-    return;
+  let moodArray = mood.split(",");
+  let moodTrackData = undefined;
+  console.log({ mood, moodArray });
+  for (let i = 0; i < moodArray.length; i++) {
+    const currentMood = moodArray[i].toLowerCase();
+    const tmp = moodToGenreMap[currentMood];
+    console.log({ currentMood });
+    if (tmp) {
+      moodTrackData = tmp;
+      break;
+    }
   }
-
+  console.log({ moodTrackData });
+  if (!moodTrackData) {
+    moodTrackData = moodToGenreMap["neutral"];
+  }
+  console.log({ moodTrackData });
   const queryParams = new URLSearchParams({
     seed_genres: moodTrackData.genres.slice(0, 2).join(","),
     target_energy: moodTrackData.target_energy.toString(),

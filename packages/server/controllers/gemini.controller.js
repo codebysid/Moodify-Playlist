@@ -8,7 +8,7 @@ async function handleDetectMood(req, res) {
     throw new StandardError(404, "Mood description not found");
   try {
     const mood = await model.generateContent(
-      `Identify the mood/emotion represented by this input in 1 word: ${moodDescription}`
+      `Identify the mood/emotion represented by this input in 1 word along with 5-10 synonyms , adjective  and noun forms (like lonely to loneliness, frustration to frustrated)  of the identified mood and all identified synonyms, put all in a csv format, without labelling: ${moodDescription}`
     );
     if (!mood || !mood.response.text())
       throw new StandardError({

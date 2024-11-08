@@ -45,7 +45,7 @@ const InputMood = () => {
       }));
       btn.textContent = "Generating Playlist....";
 
-      const res2 = await fetch(`${backendUrl}/spotify/getSongs/excited`);
+      const res2 = await fetch(`${backendUrl}/spotify/getSongs/${aiMood}`);
       if (!res2) {
         console.log("invalid response", { res2 });
       }
