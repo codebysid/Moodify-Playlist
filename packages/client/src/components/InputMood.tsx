@@ -53,7 +53,7 @@ const InputMood = () => {
       if (!data2 && !data2.success) return;
       console.log({ data2 });
       btn.textContent = "Create playlist with AI";
-      navigate(`/playlist/`, { state: { url: data2.message.playlistUrl } });
+      navigate(`/playlist`, { state: { url: data2.message.playlistUrl } });
     } catch (err) {
       console.log(err);
     }
@@ -77,20 +77,19 @@ const InputMood = () => {
   return (
     <div className="flex flex-col lg:flex-row gap-16 items-center justify-center w-full">
       <form
-        className="flex flex-col justify-center items-start lg:items-center gap-4"
+        className="flex flex-col justify-center items-start lg:items-center gap-5 lg:w-80"
         onSubmit={handleSubmit}
       >
         <textarea
-          className="rounded-lg bg-transparent outline-none resize-none pl-2 lg:pl-5"
+          className=" bg-transparent outline-none resize-none pl-2 h-14 lg:h-28 w-full lg:text-xl border-b-2 border-primary"
           value={mood.moodDescription}
           onChange={handleMoodDescriptionChange}
           placeholder="Ex: Frustrated due to college assignments"
-          rows={3}
         />
         <Button
           ref={submitBtnRef}
           type="submit"
-          className="disabled:cursor-not-allowed"
+          className="disabled:cursor-not-allowed w-full lg:text-xl"
         >
           <span>Create playlist with AI</span>
         </Button>

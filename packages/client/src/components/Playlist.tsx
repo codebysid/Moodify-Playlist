@@ -8,7 +8,7 @@ const Playlist = () => {
   } = useLocation();
   const navigate = useNavigate();
   if (!url) navigate("/");
-  const handleOpenPlaylist = () => (window.location.href = "url");
+  const handleOpenPlaylist = () => (window.location.href = url);
   return (
     <div className=" w-full flex justify-center items-center">
       <Button

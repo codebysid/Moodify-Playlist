@@ -23,7 +23,7 @@ const navItems = [
 
 const Navbar = () => {
   return (
-    <section className=" w-full flex flex-row items-center justify-around ">
+    <section className=" w-full flex flex-row items-center justify-around bg-secondary py-10">
       <h1 className="text-3xl lg:text-5xl font-bold">Moodify</h1>
       <nav className="flex-row gap-6 hidden lg:flex">
         {navItems.map((item) => {

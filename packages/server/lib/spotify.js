@@ -12,11 +12,16 @@ async function getRecommendedSongs(accessToken, mood) {
   }
 
   const queryParams = new URLSearchParams({
-    seed_genres: moodTrackData.genres.join(","),
+    seed_genres: moodTrackData.genres.slice(0, 2).join(","),
     target_energy: moodTrackData.target_energy.toString(),
     limit: "10",
+    seed_artists: [
+      "4YRxDV8wJFPHPTeXepOstw",
+      "0oOet2f43PA68X5RxKobEy",
+      "2FKWNmZWDBZR4dE5KX4plR",
+    ].join(","),
   });
-
+  console.log({ queryParams });
   try {
     const response = await fetch(
       `https://api.spotify.com/v1/recommendations?${queryParams}`,
@@ -32,7 +37,7 @@ async function getRecommendedSongs(accessToken, mood) {
     const data = await response.json();
     if (!data) throw new StandardError(501, "Tracks not valid");
     const trackUris = data?.tracks?.map((track) => track.uri);
-
+    console.log({ data, trackUris });
     return trackUris;
   } catch (err) {
     console.log("Error in getting recommended songs:", err);

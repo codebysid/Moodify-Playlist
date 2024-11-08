@@ -6,6 +6,10 @@
   animation: scroll 150s linear infinite reverse;
 }
 
+.scroll-content-left:hover,
+.scroll-content-right:hover {
+  animation-play-state: paused;
+}
 @keyframes scroll {
   0% {
     transform: translateX(0);
