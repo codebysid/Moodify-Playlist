@@ -1,5 +1,5 @@
-import Examples from "./Examples";
 import { moodSamples } from "../lib/constants";
+import Examples from "./Examples";
 
 const DisplayDemoExamples = () => {
   return (

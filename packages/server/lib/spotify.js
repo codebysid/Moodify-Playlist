@@ -8,7 +8,7 @@ async function getRecommendedSongs(accessToken, mood) {
   let moodTrackData = undefined;
   console.log({ mood, moodArray });
   for (let i = 0; i < moodArray.length; i++) {
-    const currentMood = moodArray[i].toLowerCase();
+    const currentMood = moodArray[i].trim().toLowerCase();
     const tmp = moodToGenreMap[currentMood];
     console.log({ currentMood });
     if (tmp) {

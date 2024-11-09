@@ -1,30 +1,15 @@
-import Icons from "./Icons";
-
-const navItems = [
-  {
-    id: 1,
-    title: "How to use ?",
-    icon: <Icons name="questionMarkIcon" />,
-    link: "#howToUse",
-  },
-  {
-    id: 3,
-    title: "Example Mood Prompts",
-    icon: <Icons name="playIcon" />,
-    link: "#demoDescriptions",
-  },
-  {
-    id: 2,
-    title: "Contact",
-    icon: <Icons name="contactDevIcon" />,
-    link: "#contactDeveloper",
-  },
-];
+import { navItems } from "../lib/constants";
+import Button from "./Button";
+import withNavigate from "./HOC/NavigateTo";
+import Logo from "./Logo";
 
 const Navbar = () => {
+  const LogoWithHomeNavigation = withNavigate(Button);
   return (
-    <section className=" w-full flex flex-row items-center justify-around bg-secondary py-10">
-      <h1 className="text-3xl lg:text-5xl font-bold">Moodify</h1>
+    <section className=" w-full flex flex-row items-center justify-around bg-secondary py-4">
+      <LogoWithHomeNavigation route="/" variant="ghost">
+        <Logo />
+      </LogoWithHomeNavigation>
       <nav className="flex-row gap-6 hidden lg:flex">
         {navItems.map((item) => {
           return (
@@ -36,7 +21,7 @@ const Navbar = () => {
           );
         })}
       </nav>
-      <nav className="flex flex-row items-center justify-around w-full lg:hidden fixed bottom-0 bg-primary z-50">
+      <nav className="flex flex-row items-center justify-around w-full lg:hidden fixed bottom-0 left-0 bg-primary z-50">
         {navItems.map((item) => {
           return (
             <a href={item.link} key={item.id}>

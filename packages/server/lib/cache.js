@@ -1040,3 +1040,19 @@ const moodToGenreMap = {
 };
 
 module.exports = { moodToGenreMap };
+{
+  currentMood: "joy";
+}
+
+//mood to add
+// [backend] { currentMood: 'delight' }
+// [backend] { currentMood: 'happiness' }
+// [backend] { currentMood: 'elation' }
+// [backend] { currentMood: 'exhilaration' }
+// [backend] { currentMood: 'bliss' }
+// [backend] { currentMood: 'euphoria' }
+// [backend] { currentMood: 'glee' }
+// [backend] { currentMood: 'rapture' }
+// [backend] { currentMood: 'jubilant' }
+// [backend] { currentMood: 'joyous' }
+// [backend] { currentMood: 'joyful' }

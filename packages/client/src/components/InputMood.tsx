@@ -13,7 +13,9 @@ const InputMood = () => {
     moodPlaylistUrl: "",
   });
   const submitBtnRef = useRef<HTMLButtonElement>(null);
+
   const navigate = useNavigate();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const btn = submitBtnRef.current;
@@ -33,11 +35,11 @@ const InputMood = () => {
         )}`
       );
 
-      if (!res) throw new Error("can't get res");
+      if (!res) throw new Error("Gemini under too much load, try later");
       const data = await res.json();
-      if (!data) throw new Error("can't get res");
+      if (!data) throw new Error("Gemini couldn't identify mood");
       console.log({ data });
-      if (!data.success) throw new Error("Unsuccessful request");
+      if (!data.success) throw new Error("Something went wrong, try again");
       const aiMood = data.message.mood.replace("\n", "").toLowerCase().trim();
       setMood((prev) => ({
         ...prev,
@@ -50,7 +52,8 @@ const InputMood = () => {
         console.log("invalid response", { res2 });
       }
       const data2 = await res2.json();
-      if (!data2 && !data2.success) return;
+      if (!data2 && !data2.success)
+        throw new Error("Spotify under too much load, try later");
       console.log({ data2 });
       btn.textContent = "Create playlist with AI";
       navigate(`/playlist`, { state: { url: data2.message.playlistUrl } });
@@ -59,7 +62,7 @@ const InputMood = () => {
     }
   };
 
-  const handleMoodDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
+  const handleMoodDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setMood((prev) =>
       prev
         ? { ...prev, moodDescription: e.target.value }
@@ -69,6 +72,7 @@ const InputMood = () => {
             moodPlaylistUrl: "",
           }
     );
+  };
 
   useEffect(() => {
     console.log({ mood });

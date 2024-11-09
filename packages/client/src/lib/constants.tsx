@@ -1,3 +1,5 @@
+import Icons from "../components/Icons";
+
 export const moodSamples = [
   "Today, I am as lost as a phone signal in a lift… here, but barely useful",
   "I feel like that Abey yaar! you say when Zomato delivers your food late.",
@@ -22,4 +24,25 @@ export const moodSamples = [
   "I feel like *Gaitonde* after successfully deploying my project—'Kabhi Kabhi lagta hai apunich bhagwan hai!'",
   "I'm like a developer who just fixed a critical bug and now feeling like a superhero. ",
   "Feeling like an absolute champ after finding the one missing semicolon that broke the whole app.",
+];
+
+export const navItems = [
+  {
+    id: 1,
+    title: "How to use ?",
+    icon: <Icons name="questionMarkIcon" />,
+    link: "#howToUse",
+  },
+  {
+    id: 3,
+    title: "Example Mood Prompts",
+    icon: <Icons name="playIcon" />,
+    link: "#demoDescriptions",
+  },
+  {
+    id: 2,
+    title: "Contact",
+    icon: <Icons name="contactDevIcon" />,
+    link: "#contactDeveloper",
+  },
 ];

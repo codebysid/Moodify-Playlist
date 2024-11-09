@@ -5,21 +5,23 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import InputMood from "./components/InputMood.tsx";
 import Playlist from "./components/Playlist.tsx";
-import ErrorBoundary from "./components/ErrorPage.tsx";
+import CustomError from "./components/CustomError.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <ErrorBoundary />,
+    errorElement: <CustomError />,
     children: [
       {
         index: true,
         element: <InputMood />,
+        errorElement: <CustomError />,
       },
       {
         path: "/playlist",
         element: <Playlist />,
+        errorElement: <CustomError />,
       },
     ],
   },
