@@ -46,3 +46,30 @@ export const navItems = [
     link: "#contactDeveloper",
   },
 ];
+
+export const builtWith = [
+  {
+    id: 1,
+    title: "React.js",
+    link: "",
+    icon: <Icons name="reactIcon" />,
+  },
+  {
+    id: 2,
+    title: "Node.js",
+    link: "",
+    icon: <Icons name="nodeIcon" />,
+  },
+  {
+    id: 3,
+    title: "Gemini",
+    link: "",
+    icon: <Icons name="geminiIcon" />,
+  },
+  {
+    id: 4,
+    title: "Spotify",
+    link: "",
+    icon: <Icons name="spotifyIcon" />,
+  },
+];

@@ -70,7 +70,7 @@ const socials = [
 
 export default function ContactDeveloper() {
   return (
-    <div id="contactDeveloper" className="flex flex-col gap-20 lg:gap-40">
+    <div id="contactDeveloper" className="flex flex-col gap-20 ">
       <h2 className=" text-xl lg:text-3xl font-bold text-center">
         Contact Developer
       </h2>

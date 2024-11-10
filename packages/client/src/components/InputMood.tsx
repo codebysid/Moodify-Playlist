@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import Tagline from "./Tagline";
 
 const InputMood = () => {
   const [mood, setMood] = useState<{
@@ -79,25 +80,30 @@ const InputMood = () => {
   }, [mood]);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-16 items-center justify-center w-full">
-      <form
-        className="flex flex-col justify-center items-start lg:items-center gap-5 lg:w-80"
-        onSubmit={handleSubmit}
-      >
-        <textarea
-          className=" bg-transparent outline-none resize-none pl-2 h-14 lg:h-28 w-full lg:text-xl border-b-2 border-primary"
-          value={mood.moodDescription}
-          onChange={handleMoodDescriptionChange}
-          placeholder="Ex: Frustrated due to college assignments"
-        />
-        <Button
-          ref={submitBtnRef}
-          type="submit"
-          className="disabled:cursor-not-allowed w-full lg:text-xl"
-        >
-          <span>Create playlist with AI</span>
-        </Button>
-      </form>
+    <div className=" flex flex-col gap-10">
+      <Tagline tagline="Express Your Mood." />
+      <div className="border-animation relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 items-center justify-center w-full border-2 border-primary bg-secondary p-10 rounded-full">
+          <form
+            className="flex flex-col justify-center items-start lg:items-center gap-5 lg:w-80"
+            onSubmit={handleSubmit}
+          >
+            <textarea
+              className=" bg-transparent outline-none resize-none pl-2 h-14 lg:h-28 w-full lg:text-xl"
+              value={mood.moodDescription}
+              onChange={handleMoodDescriptionChange}
+              placeholder="Ex: Frustrated due to college assignments"
+            />
+            <Button
+              ref={submitBtnRef}
+              type="submit"
+              className="disabled:cursor-not-allowed w-full lg:text-xl"
+            >
+              <span>Create playlist with AI</span>
+            </Button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

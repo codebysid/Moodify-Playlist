@@ -18,7 +18,7 @@ const Button = forwardRef<HTMLButtonElement, IButton>(function Button(
   return (
     <button
       ref={ref}
-      className={`flex flex-row justify-center items-center gap-3  px-4 py-2 rounded-lg transition-all duration-300 border-2 border-transparent font-semibold  hover:bg-opacity-50 hover:border-2  ${
+      className={`flex flex-row justify-center items-center gap-3  px-4 py-2 rounded-lg transition-all duration-300 border-2 border-transparent font-semibold whitespace-nowrap  hover:bg-opacity-50 hover:border-2  ${
         variant == "primary" && `bg-primary hover:border-primary`
       } ${variant == "ghost" && `bg-transparent`} ${className}`}
       onClick={onClick}

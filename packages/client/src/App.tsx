@@ -4,18 +4,20 @@ import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import DisplayDemoExamples from "./components/DisplayDemoExamples";
 import ContactDeveloper from "./components/Contact";
+import BuiltWith from "./components/BuiltWith";
 
 function App() {
   return (
-    <div className=" flex flex-col lg:items-center min-h-screen py-20 gap-40 px-5 lg:gap-80 lg:px-80">
-      <div className=" fixed top-0 w-full z-50">
+    <div className=" flex flex-col lg:items-center py-20 gap-40 px-5 lg:gap-48 lg:px-10">
+      <div className=" fixed top-0 w-full z-50 ">
         <Navbar />
       </div>
-      <div className="flex items-center justify-center min-h-[80vh] lg:min-h-[83vh]">
+      <div className="flex items-end justify-center min-h-[60vh] lg:min-h-[55vh]">
         <Outlet />
       </div>
-      <HowToUse />
       <DisplayDemoExamples />
+      <HowToUse />
+      <BuiltWith />
       <ContactDeveloper />
     </div>
   );

@@ -1,11 +1,11 @@
 import ScrollItem from "./ScrollItem";
 
 interface IExamples {
-  infiniteScrollData: string[];
+  scrollData: string[];
   scrollDirection: "left" | "right";
 }
 
-const Examples = ({ infiniteScrollData, scrollDirection }: IExamples) => {
+const InfiniteScroll = ({ scrollData, scrollDirection }: IExamples) => {
   return (
     <div className="flex overflow-hidden">
       <div
@@ -15,15 +15,13 @@ const Examples = ({ infiniteScrollData, scrollDirection }: IExamples) => {
             : scrollDirection == "right" && `scroll-content-right`
         } `}
       >
-        {infiniteScrollData.map((item, key) => (
-          <ScrollItem key={key} item={item} />
-        ))}
-        {infiniteScrollData.map((item, key) => (
-          <ScrollItem key={key} item={item} />
-        ))}
+        {scrollData &&
+          scrollData.map((item, key) => <ScrollItem key={key} item={item} />)}
+        {scrollData &&
+          scrollData.map((item, key) => <ScrollItem key={key} item={item} />)}
       </div>
     </div>
   );
 };
 
-export default Examples;
+export default InfiniteScroll;

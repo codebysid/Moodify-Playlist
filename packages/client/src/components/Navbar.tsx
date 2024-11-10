@@ -6,7 +6,7 @@ import Logo from "./Logo";
 const Navbar = () => {
   const LogoWithHomeNavigation = withNavigate(Button);
   return (
-    <section className=" w-full flex flex-row items-center justify-around bg-secondary py-4">
+    <section className=" w-full flex flex-row items-center justify-center lg:justify-around bg-secondary py-0 lg:py-4">
       <LogoWithHomeNavigation route="/" variant="ghost">
         <Logo />
       </LogoWithHomeNavigation>

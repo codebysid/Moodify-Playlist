@@ -2,7 +2,7 @@ const HowToUse = () => {
   return (
     <div
       id="howToUse"
-      className=" flex flex-col justify-center items-center gap-20 lg:gap-40"
+      className=" flex flex-col justify-center items-center gap-20 "
     >
       <h2 className=" text-xl lg:text-3xl font-bold">How To Use ?</h2>
       <div className="flex flex-col justify-center items-center gap-5">

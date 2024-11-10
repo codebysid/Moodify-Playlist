@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 interface IwithHomeNavigation {
   children?: ReactNode;
-  route: string;
+  route?: string;
+  href?: string;
 }
 
 const withNavigate = <P extends Object>(WrappedComponent: ComponentType<P>) => {
@@ -11,7 +12,9 @@ const withNavigate = <P extends Object>(WrappedComponent: ComponentType<P>) => {
     const navigate = useNavigate();
     const handleHomeNavigation = () => {
       console.log("to home");
-      navigate(props.route);
+      const { route, href } = props;
+      if (route) navigate(route);
+      if (href) window.open(href, "_blank");
     };
 
     return (
