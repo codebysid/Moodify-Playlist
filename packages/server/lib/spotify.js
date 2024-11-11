@@ -1,5 +1,6 @@
 const { moodToGenreMap, cache } = require("./cache");
 const { StandardError } = require("./ErrorAndResponse");
+const { redisClient } = require("./redis.config");
 
 async function getRecommendedSongs(accessToken, mood) {
   if (!accessToken || !mood)
@@ -55,39 +56,11 @@ async function getRecommendedSongs(accessToken, mood) {
   }
 }
 
-// async function getSpotifyAccessToken() {
-
-//   const response = await fetch("https://accounts.spotify.com/api/token", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       Authorization:
-//         "Basic " +
-//         Buffer.from(
-//           process.env.SPOTIFY_CLIENT_ID +
-//             ":" +
-//             process.env.SPOTIFY_CLIENT_SECRET
-//         ).toString("base64"),
-//     },
-//     body: new URLSearchParams({
-//       grant_type: "authorization_code",
-//       code: cache.spotifyAuthorizationCode,
-//       redirect_uri: process.env.REDIRECT_URI,
-//     }),
-//   });
-//   const data = await response.json();
-//   console.log({ data });
-
-//   if (data.description == "Authorization code expired") {
-//     // invoke refresh token
-//   }
-//   // if (!response.data)
-//   //   throw new StandardError(500, "not able to generate tokens");
-//   return response.data;
-// }
-
 async function generateAccessTokenWithRefreshToken() {
   try {
+    if (!redisClient.isOpen) {
+      await redisClient.connect();
+    }
     const res = await fetch("https://accounts.spotify.com/api/token", {
       method: "POST",
       headers: {
@@ -100,14 +73,14 @@ async function generateAccessTokenWithRefreshToken() {
       },
       body: new URLSearchParams({
         grant_type: "refresh_token",
-        refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
+        refresh_token: await redisClient.get("spotifyRefreshToken"),
       }),
     });
     const data = await res.json();
     if (!data.access_token)
       throw new StandardError(
         500,
-        "Can't generate access token with refresh token"
+        "Can't generate access token with refresh token/ maybe refresh token expired:- contact developer"
       );
 
     return data.access_token;

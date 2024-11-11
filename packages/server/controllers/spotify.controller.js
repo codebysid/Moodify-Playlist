@@ -1,13 +1,14 @@
 const { StandardError, StandardResponse } = require("../lib/ErrorAndResponse");
+const { redisClient } = require("../lib/redis.config");
 const {
   getRecommendedSongs,
   generatePlaylist,
   addTracksToPlaylistId,
   generateAccessTokenWithRefreshToken,
 } = require("../lib/spotify");
-const Redis = require("redis");
+// const Redis = require("redis");
 
-const redisClient = Redis.createClient(process.env.REDIS_URL);
+// const redisClient = Redis.createClient(process.env.REDIS_URL);
 
 async function handleGetSongsWithMood(req, res) {
   const { mood } = req.params;
