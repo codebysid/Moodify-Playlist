@@ -48,7 +48,13 @@ const InputMood = () => {
       }));
       btn.textContent = "Generating Playlist....";
 
-      const res2 = await fetch(`${backendUrl}/spotify/getSongs/${aiMood}`);
+      const res2 = await fetch(`${backendUrl}/spotify/getSongs`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ aiMood }),
+      });
       if (!res2) {
         console.log("invalid response", { res2 });
       }

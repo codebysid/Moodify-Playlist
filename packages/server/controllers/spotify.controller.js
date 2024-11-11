@@ -11,7 +11,7 @@ const {
 // const redisClient = Redis.createClient(process.env.REDIS_URL);
 
 async function handleGetSongsWithMood(req, res) {
-  const { mood } = req.params;
+  const { aiMood: mood } = req.body;
 
   if (!mood) throw new StandardError(404, "Mood not found");
 
