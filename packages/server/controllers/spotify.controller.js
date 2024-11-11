@@ -6,9 +6,6 @@ const {
   addTracksToPlaylistId,
   generateAccessTokenWithRefreshToken,
 } = require("../lib/spotify");
-// const Redis = require("redis");
-
-// const redisClient = Redis.createClient(process.env.REDIS_URL);
 
 async function handleGetSongsWithMood(req, res) {
   const { aiMood: mood } = req.body;
