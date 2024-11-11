@@ -2,41 +2,6 @@ const { moodToGenreMap, cache } = require("./cache");
 const { StandardError } = require("./ErrorAndResponse");
 const { redisClient } = require("./redis.config");
 
-async function handleGetSongsWithMood(mood) {
-  if (!mood) throw new StandardError(404, "Mood not found");
-  try {
-    if (!redisClient.isOpen) {
-      await redisClient.connect();
-    }
-    let accessToken = await redisClient.get("spotifyAccessToken");
-    if (!accessToken) {
-      accessToken = await generateAccessTokenWithRefreshToken();
-      if (!accessToken) {
-        throw new StandardError(500, "Not able to generate token, try again");
-      }
-      await redisClient.setEx("spotifyAccessToken", 3600, accessToken);
-    }
-    const tracks = await getRecommendedSongs(accessToken, mood);
-    console.log({ tracks });
-    if (!tracks)
-      throw new StandardError(500, "No tracks returned from spotify");
-    const playlistId = await generatePlaylist(accessToken);
-    if (!playlistId) return;
-    const playlistSnapshotId = await addTracksToPlaylistId(
-      accessToken,
-      playlistId,
-      tracks
-    );
-    if (!playlistSnapshotId) return;
-    return {
-      playlistUrl: `https://open.spotify.com/playlist/${playlistId}`,
-    };
-  } catch (err) {
-    console.log(err);
-    throw new StandardError(500, err);
-  }
-}
-
 async function getRecommendedSongs(accessToken, mood) {
   if (!accessToken || !mood)
     throw new StandardError(404, "Access Token or mood not found");
@@ -190,9 +155,9 @@ async function addTracksToPlaylistId(accessToken, playlistId, tracks) {
 
 module.exports = {
   getRecommendedSongs,
+  // getSpotifyAccessToken,
   generatePlaylist,
   generatePlaylist,
   addTracksToPlaylistId,
   generateAccessTokenWithRefreshToken,
-  handleGetSongsWithMood,
 };

@@ -1,6 +1,5 @@
 const { model } = require("../lib/gemini");
 const { StandardError, StandardResponse } = require("../lib/ErrorAndResponse");
-const { handleGetSongsWithMood } = require("../lib/spotify");
 
 async function handleDetectMood(req, res) {
   const { moodDescription } = req.params;
@@ -17,8 +16,7 @@ async function handleDetectMood(req, res) {
         message: "not able to process request, try later",
       });
     console.log("Gemini result is =>", mood.response.text());
-    const playlistUri = await handleGetSongsWithMood(mood.response.text());
-    return res.json(new StandardResponse(200, playlistUri));
+    return res.json(new StandardResponse(200, { mood: mood.response.text() }));
   } catch (err) {
     console.log(err);
   }
