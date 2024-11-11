@@ -23,7 +23,7 @@ const InputMood = () => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     console.log({ backendUrl, btn, submitBtnRef });
     if (!mood.moodDescription || !backendUrl || !btn) return;
-    btn.textContent = "Detecting Mood....";
+    btn.textContent = "Wait...";
     setMood((prev) => ({
       ...prev,
       detectedMoodWithAi: "",
@@ -41,23 +41,9 @@ const InputMood = () => {
       if (!data) throw new Error("Gemini couldn't identify mood");
       console.log({ data });
       if (!data.success) throw new Error("Something went wrong, try again");
-      const aiMood = data.message.mood.replace("\n", "").toLowerCase().trim();
-      setMood((prev) => ({
-        ...prev,
-        detectedMoodWithAi: aiMood,
-      }));
-      btn.textContent = "Generating Playlist....";
 
-      const res2 = await fetch(`${backendUrl}/spotify/getSongs/${aiMood}`);
-      if (!res2) {
-        console.log("invalid response", { res2 });
-      }
-      const data2 = await res2.json();
-      if (!data2 && !data2.success)
-        throw new Error("Spotify under too much load, try later");
-      console.log({ data2 });
       btn.textContent = "Create playlist with AI";
-      navigate(`/playlist`, { state: { url: data2.message.playlistUrl } });
+      navigate(`/playlist`, { state: { url: data.message.playlistUrl } });
     } catch (err) {
       console.log(err);
     }
