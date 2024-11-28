@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import Tagline from "./Tagline";
 
 const InputMood = () => {
@@ -21,7 +21,6 @@ const InputMood = () => {
     e.preventDefault();
     const btn = submitBtnRef.current;
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
-    console.log({ backendUrl, btn, submitBtnRef });
     if (!mood.moodDescription || !backendUrl || !btn) return;
     btn.textContent = "Detecting Mood....";
     setMood((prev) => ({
@@ -39,7 +38,6 @@ const InputMood = () => {
       if (!res) throw new Error("Gemini under too much load, try later");
       const data = await res.json();
       if (!data) throw new Error("Gemini couldn't identify mood");
-      console.log({ data });
       if (!data.success) throw new Error("Something went wrong, try again");
       const aiMood = data.message.mood.replace("\n", "").toLowerCase().trim();
       setMood((prev) => ({
@@ -56,16 +54,18 @@ const InputMood = () => {
         body: JSON.stringify({ aiMood }),
       });
       if (!res2) {
-        console.log("invalid response", { res2 });
+        throw new Error("Spotify under too much load, try later");
       }
       const data2 = await res2.json();
       if (!data2 && !data2.success)
         throw new Error("Spotify under too much load, try later");
-      console.log({ data2 });
       btn.textContent = "Create playlist with AI";
       navigate(`/playlist`, { state: { url: data2.message.playlistUrl } });
     } catch (err) {
       console.log(err);
+      navigate("/error", {
+        state: { message: "Spotify API under too much load, pls try later" },
+      });
     }
   };
 
@@ -80,10 +80,6 @@ const InputMood = () => {
           }
     );
   };
-
-  useEffect(() => {
-    console.log({ mood });
-  }, [mood]);
 
   return (
     <div className=" flex flex-col gap-10">

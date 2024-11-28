@@ -1,8 +1,9 @@
-import { useRouteError } from "react-router-dom";
+import { useLocation, useRouteError } from "react-router-dom";
 import Button from "./Button";
 import withNavigate from "./HOC/NavigateTo";
 
 export default function CustomError() {
+  const { state } = useLocation();
   const HomeButton = withNavigate(Button);
   let error = useRouteError();
   console.error(error);
@@ -17,7 +18,7 @@ export default function CustomError() {
             <span>{(error as any)?.data || "No additional data"}</span>
           </div>
         ) : (
-          "An unknown error occurred."
+          state.message || "An unknown error occurred."
         )}
       </span>
       <HomeButton route="/">Create New Playlist</HomeButton>

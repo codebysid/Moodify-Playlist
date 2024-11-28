@@ -23,6 +23,10 @@ const router = createBrowserRouter([
         element: <Playlist />,
         errorElement: <CustomError />,
       },
+      {
+        path: "/error",
+        element: <CustomError />,
+      },
     ],
   },
 ]);
