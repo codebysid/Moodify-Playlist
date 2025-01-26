@@ -8,7 +8,7 @@ import BuiltWith from "./components/BuiltWith";
 
 function App() {
   return (
-    <div className=" flex flex-col lg:items-center py-20 gap-40 px-5 lg:gap-48 lg:px-10">
+    <div className=" flex flex-col lg:items-center py-20 gap-40 px-5 lg:gap-48 lg:px-10 lg:py-40">
       <div className=" fixed top-0 w-full z-50 ">
         <Navbar />
       </div>
